@@ -21,7 +21,7 @@ const swaggerOptions = {
             contact : {
                 name : "Aditya Pandey"
             },
-            servers : ["http://localhost:3000"]
+            servers : ["http://localhost:3000","https://simple-to-do-list-api.herokuapp.com/"]
         }
     },
     apis : ["server.js","./resources/routes/item_router.js"]
