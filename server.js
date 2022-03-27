@@ -24,12 +24,11 @@ const swaggerOptions = {
             servers : ["http://localhost:3000"]
         }
     },
-    apis : ["server.js","./routes/index.js","./resources/routes/item_router.js"]
+    apis : ["server.js","./resources/routes/item_router.js"]
 }
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
-app.use("/api/docs", swaggerUiExpress.serve, swaggerUiExpress.setup(swaggerDocs));
 //Middleware
 app.use(json());
 app.use(cors());
@@ -38,8 +37,21 @@ app.use(morgan("dev"));
 
 //Routes
 const successString = '<div style="display : flex;justify-content:center"><h1><i>Server is Running!</i></h1></div>';
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     description: Check Server's Status
+ *     responses:
+ *       '200':
+ *         description: Server Running...
+ *       '500':
+ *         description: Internal Server Error
+ */
 app.get("/",(req,res)=>res.status(200).send(successString));
 app.use("/api", IndexRouter);
+app.use("/api/docs", swaggerUiExpress.serve, swaggerUiExpress.setup(swaggerDocs));
+
 
 
 //Error Handler
