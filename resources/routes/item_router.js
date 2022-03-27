@@ -21,7 +21,7 @@ const router = Router();
  *  post:
  *    description: Create new to-do task
  *    consumes:
- *    - application/json:
+ *    - application/json
  *    parameters:
  *    - in: body
  *      name: item     
@@ -113,7 +113,7 @@ router.route("/")
  *  patch:
  *    description: Updateto-do task
  *    consumes:
- *    - application/json:
+ *    - application/json
  *    parameters:
  *    - in: path
  *      name: id
